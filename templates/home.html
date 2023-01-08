@@ -1,0 +1,21 @@
+ {% extends "base.html" %}
+ {% block title %}Home{% endblock %}
+ {% block content  %}
+ {%if current_user.is_authenticated  %}
+    <h2>Welcome To {{ current_user.username }} Blog!</h2>
+{% endif %}
+    {% for post in posts  %}
+
+    <p>
+        {{ post.text }} <br>
+        <small class='text-muted'>
+            {{ post.date_created }}
+        </small>
+    </p>
+    <a href='/posts/{{ post.id }}/'>
+        Comment
+    </a>
+        
+    {% endfor %}
+        
+ {% endblock %}
